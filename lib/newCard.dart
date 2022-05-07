@@ -5,7 +5,7 @@ import 'main.dart';
 class newCard extends StatelessWidget {
   final data datas;
 
-  newCard({Key key, this.datas}) : super(key: key);
+  newCard({Key? key, required this.datas}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -21,7 +21,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +147,7 @@ class MyApp extends StatelessWidget {
 }
 
 class miniProject extends StatelessWidget {
-  const miniProject({Key key}) : super(key: key);
+  const miniProject({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +256,7 @@ class miniProject extends StatelessWidget {
 }
 
 class StackLearning extends StatelessWidget {
-  const StackLearning({Key key}) : super(key: key);
+  const StackLearning({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -325,7 +325,7 @@ class StackLearning extends StatelessWidget {
 
 //Below Code for the making  ========>>>>>>>>>> FORM <<<<<<<<<<<<<<=============
 class FormMain extends StatelessWidget {
-  const FormMain({Key key}) : super(key: key);
+  const FormMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -342,7 +342,7 @@ class FormMain extends StatelessWidget {
 }
 
 class FORM extends StatefulWidget {
-  const FORM({Key key}) : super(key: key);
+  const FORM({Key? key}) : super(key: key);
 
   @override
   _FORMState createState() => _FORMState();
@@ -364,7 +364,7 @@ class _FORMState extends State<FORM> {
                 hintText: "Enter your name",
                 icon: Icon(Icons.person)),
             validator: (value) {
-              if (value.isEmpty) {
+              if (value!.isEmpty) {
                 return "please Fill the Name";
               } else {
                 return null;
@@ -377,7 +377,7 @@ class _FORMState extends State<FORM> {
                 hintText: "Enter your Password",
                 icon: Icon(Icons.person)),
             validator: (value) {
-              if (value.isEmpty) {
+              if (value!.isEmpty) {
                 return "please Fill the Password";
               } else {
                 return null;
@@ -390,7 +390,7 @@ class _FORMState extends State<FORM> {
                 hintText: "Enter your Github Link",
                 icon: Icon(Icons.link)),
             validator: (value) {
-              if (value.isEmpty) {
+              if (value!.isEmpty) {
                 return "please Fill the GitHubLink";
               } else {
                 return null;
@@ -401,7 +401,7 @@ class _FORMState extends State<FORM> {
             child: RaisedButton(
               child: Text("Submit"),
               onPressed: () {
-                if (keys.currentState.validate()) {
+                if (keys.currentState!.validate()) {
                   Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text("Validation Going On"),
                   ));
@@ -420,7 +420,7 @@ class _FORMState extends State<FORM> {
 //Start Code of  ========>>>>>>>>>> ICONS <<<<<<<<<<<<<<=============
 
 class ICON extends StatelessWidget {
-  const ICON({Key key}) : super(key: key);
+  const ICON({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -481,7 +481,7 @@ class ICON extends StatelessWidget {
 //Start Code of  ========>>>>>>>>>> IMAGES <<<<<<<<<<<<<<=============
 
 class IMAGES extends StatelessWidget {
-  const IMAGES({Key key}) : super(key: key);
+  const IMAGES({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -534,7 +534,7 @@ class IMAGES extends StatelessWidget {
 //Start Code of  ========>>>>>>>>>> CARD & DRAWER <<<<<<<<<<<<<<=============
 
 class CARDwithDRAWER extends StatelessWidget {
-  const CARDwithDRAWER({Key key}) : super(key: key);
+  const CARDwithDRAWER({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -628,7 +628,7 @@ class CARDwithDRAWER extends StatelessWidget {
                           child: FloatingActionButton.extended(
                             label: Text("Location"),
                             icon: Icon(Icons.location_on),
-                            backgroundColor: Colors.transparent,
+                            backgroundColor: Colors.transparent, onPressed: () {  },
                           ),
                           color: Colors.black,
                           onPressed: () {},
@@ -650,7 +650,7 @@ class CARDwithDRAWER extends StatelessWidget {
 //Start Code of  ========>>>>>>>>>> TAB-BAR <<<<<<<<<<<<<<=============
 
 class TABBAR extends StatelessWidget {
-  const TABBAR({Key key}) : super(key: key);
+  const TABBAR({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -693,7 +693,7 @@ class TABBAR extends StatelessWidget {
 //Start Code of  ========>>>>>>>>>> Pages <<<<<<<<<<<<<<=============
 
 class HOME_PAGE extends StatelessWidget {
-  const HOME_PAGE({Key key}) : super(key: key);
+  const HOME_PAGE({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -709,7 +709,7 @@ class HOME_PAGE extends StatelessWidget {
 }
 
 class NEWSFEED_PAGE extends StatelessWidget {
-  const NEWSFEED_PAGE({Key key}) : super(key: key);
+  const NEWSFEED_PAGE({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -725,7 +725,7 @@ class NEWSFEED_PAGE extends StatelessWidget {
 }
 
 class PROFILE_PAGE extends StatelessWidget {
-  const PROFILE_PAGE({Key key}) : super(key: key);
+  const PROFILE_PAGE({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -743,7 +743,7 @@ class PROFILE_PAGE extends StatelessWidget {
 
 //Start Code of  ========>>>>>>>>>> AlertDialog <<<<<<<<<<<<<<=============
 class mAlertDialog extends StatelessWidget {
-  const mAlertDialog({Key key}) : super(key: key);
+  const mAlertDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -773,7 +773,7 @@ class AlertWidget extends StatelessWidget {
               // print("User Selected $fieldetale");
 
               //  FOR SELECTING LANGUAGES THE
-              final selectLanguage options =
+              final Future<selectLanguage?> options =
               await selectAlertDialogWidget(context);
               print(options);
             },
@@ -830,7 +830,7 @@ inputAlertDialogWidget(BuildContext context, TextEditingController controller) {
 
 enum field { cancel, Accept }
 
-Future<field> confirmAlertDialogWidget(BuildContext context) async {
+Future<Future<field?>> confirmAlertDialogWidget(BuildContext context) async {
   return showDialog<field>(
       context: context,
       barrierDismissible: false,
@@ -860,7 +860,7 @@ Future<field> confirmAlertDialogWidget(BuildContext context) async {
 
 enum selectLanguage { JAVA, C, PYTHON, PHP }
 
-Future<selectLanguage> selectAlertDialogWidget(BuildContext context) async {
+Future<Future<selectLanguage?>> selectAlertDialogWidget(BuildContext context) async {
   return showDialog<selectLanguage>(
       context: context,
       barrierDismissible: false,
@@ -940,7 +940,7 @@ class mLIST extends StatelessWidget {
 class mLongList extends StatelessWidget {
   final List<String> names;
 
-  mLongList({Key key, this.names}) : super(key: key);
+  mLongList({Key? key, required this.names}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -983,7 +983,7 @@ class mGridList extends StatelessWidget {
 }
 
 class data {
-  const data({this.title, this.icon});
+  const data({required this.title, required this.icon});
 
   final String title;
   final IconData icon;
