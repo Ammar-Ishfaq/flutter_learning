@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,7 +19,8 @@ void main() {
   // runApp(mLIST());
   // runApp(
   //     mLongList(names: List<String>.generate(50, (a) => "Hellow Coders $a")));
-  runApp(mGridList());
+  // runApp(mGridList());
+  runApp(mHorizontalList());
 }
 
 class MyApp extends StatelessWidget {
@@ -165,19 +168,19 @@ class miniProject extends StatelessWidget {
             children: [
               Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 30),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.orange,
-                        border: Border.all(color: Colors.white, width: 1.0)),
-                    child: Center(
-                        child: Text(
-                          "S",
-                          style: TextStyle(fontSize: 50, color: Colors.white),
-                        )),
-                  )),
+                margin: EdgeInsets.only(top: 30),
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.orange,
+                    border: Border.all(color: Colors.white, width: 1.0)),
+                child: Center(
+                    child: Text(
+                  "S",
+                  style: TextStyle(fontSize: 50, color: Colors.white),
+                )),
+              )),
               Container(
                   margin: EdgeInsets.all(30),
                   decoration: BoxDecoration(
@@ -282,7 +285,7 @@ class StackLearning extends StatelessWidget {
                     child: Text(
                       "Center Text inside Container",
                       style:
-                      TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -518,7 +521,7 @@ class IMAGES extends StatelessWidget {
                     height: 150,
                     placeholder: "assets/duck.png",
                     image:
-                    "https://www.sammobile.com/wp-content/uploads/2019/03/keyguard_default_wallpaper_silver.png",
+                        "https://www.sammobile.com/wp-content/uploads/2019/03/keyguard_default_wallpaper_silver.png",
                   )
                 ],
               )
@@ -605,7 +608,7 @@ class CARDwithDRAWER extends StatelessWidget {
                         ),
                         title: Text("Ammar Ishfaq",
                             style:
-                            TextStyle(fontSize: 25, color: Colors.black)),
+                                TextStyle(fontSize: 25, color: Colors.black)),
                         subtitle: Text("+923234164199",
                             style: TextStyle(
                                 fontSize: 15,
@@ -628,7 +631,8 @@ class CARDwithDRAWER extends StatelessWidget {
                           child: FloatingActionButton.extended(
                             label: Text("Location"),
                             icon: Icon(Icons.location_on),
-                            backgroundColor: Colors.transparent, onPressed: () {  },
+                            backgroundColor: Colors.transparent,
+                            onPressed: () {},
                           ),
                           color: Colors.black,
                           onPressed: () {},
@@ -774,7 +778,7 @@ class AlertWidget extends StatelessWidget {
 
               //  FOR SELECTING LANGUAGES THE
               final Future<selectLanguage?> options =
-              await selectAlertDialogWidget(context);
+                  await selectAlertDialogWidget(context);
               print(options);
             },
             color: Colors.blue,
@@ -860,7 +864,8 @@ Future<Future<field?>> confirmAlertDialogWidget(BuildContext context) async {
 
 enum selectLanguage { JAVA, C, PYTHON, PHP }
 
-Future<Future<selectLanguage?>> selectAlertDialogWidget(BuildContext context) async {
+Future<Future<selectLanguage?>> selectAlertDialogWidget(
+    BuildContext context) async {
   return showDialog<selectLanguage>(
       context: context,
       barrierDismissible: false,
@@ -965,20 +970,20 @@ class mGridList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: Text("GRID List"),
-          ),
-          body: GridView.count(
-            crossAxisCount: 2,
-            children: List.generate(datas.length, (index) {
-              return Center(
-                child: newCard(
-                  datas: datas[index],
-                ),
-              );
-            }),
-          ),
-        ));
+      appBar: AppBar(
+        title: Text("GRID List"),
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(datas.length, (index) {
+          return Center(
+            child: newCard(
+              datas: datas[index],
+            ),
+          );
+        }),
+      ),
+    ));
   }
 }
 
@@ -989,7 +994,7 @@ class data {
   final IconData icon;
 }
 
-const List<data> datas = const <data>[
+List<data> datas = <data>[
   const data(title: "home", icon: Icons.home),
   const data(title: "profile", icon: Icons.account_circle),
   const data(title: "setting", icon: Icons.settings),
@@ -1004,5 +1009,37 @@ const List<data> datas = const <data>[
   const data(title: "logout", icon: Icons.exit_to_app)
 ];
 //END  Code of  ========>>>>>>>>>> Grid List <<<<<<<<<<<<<<=============
+
+//Start  Code of  ========>>>>>>>>>> Horizontal List <<<<<<<<<<<<<<=============
+class mHorizontalList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("Horizontal List"),
+      ),
+      body: Container(
+        height: 150.0,
+        child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: List.generate(datas.length, (index) {
+              return Container(
+                width: 148.0,
+                color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                child: Center(
+                  child: ListTile(
+                    leading: Icon(datas[index].icon),
+                    title: Text(datas[index].title),
+                  ),
+                ),
+              );
+            })),
+      ),
+    ));
+  }
+}
+
+//END  Code of  ========>>>>>>>>>> Horizontal List <<<<<<<<<<<<<<=============
 
 //END  Code of  ========>>>>>>>>>>  List <<<<<<<<<<<<<<=============
