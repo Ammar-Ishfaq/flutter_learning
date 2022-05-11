@@ -1019,7 +1019,7 @@ class mHorizontalList extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Horizontal List"),
       ),
-      body: Container(
+      body: SizedBox(
         height: 150.0,
         child: ListView(
             scrollDirection: Axis.horizontal,
