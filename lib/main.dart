@@ -19,8 +19,8 @@ void main() {
   // runApp(mLIST());
   // runApp(
   //     mLongList(names: List<String>.generate(50, (a) => "Hellow Coders $a")));
-  // runApp(mGridList());
-  runApp(mHorizontalList());
+  runApp(mGridList());
+  // runApp(mHorizontalList());
 }
 
 class MyApp extends StatelessWidget {
@@ -976,10 +976,8 @@ class mGridList extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2,
         children: List.generate(datas.length, (index) {
-          return Center(
-            child: newCard(
-              datas: datas[index],
-            ),
+          return newCard(
+            datas: datas[index],
           );
         }),
       ),
@@ -1026,7 +1024,8 @@ class mHorizontalList extends StatelessWidget {
             children: List.generate(datas.length, (index) {
               return Container(
                 width: 148.0,
-                color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                color:
+                    Colors.primaries[Random().nextInt(Colors.primaries.length)],
                 child: Center(
                   child: ListTile(
                     leading: Icon(datas[index].icon),

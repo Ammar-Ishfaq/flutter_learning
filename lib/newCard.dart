@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -10,16 +12,26 @@ class newCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment:  CrossAxisAlignment.center,
-        children: [
-
-          Expanded(
-            child: Icon(datas.icon,size: 40,),
-          ),
-          Text(datas.title,style: TextStyle(fontSize: 30),),
-        ],
+      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+      margin: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 10.0),
+              child: Icon(
+                datas.icon,
+                size: 40,
+              ),
+            ),
+            Text(
+              datas.title,
+              style: const TextStyle(fontSize: 25),
+            ),
+          ],
+        ),
       ),
     );
   }
