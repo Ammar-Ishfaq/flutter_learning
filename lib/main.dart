@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:toast/toast.dart';
 import 'newCard.dart';
 
 void main() {
@@ -19,8 +19,9 @@ void main() {
   // runApp(mLIST());
   // runApp(
   //     mLongList(names: List<String>.generate(50, (a) => "Hellow Coders $a")));
-  runApp(mGridList());
+  // runApp(mGridList());
   // runApp(mHorizontalList());
+  runApp(GridListWithToast());
 }
 
 class MyApp extends StatelessWidget {
@@ -1042,3 +1043,52 @@ class mHorizontalList extends StatelessWidget {
 //END  Code of  ========>>>>>>>>>> Horizontal List <<<<<<<<<<<<<<=============
 
 //END  Code of  ========>>>>>>>>>>  List <<<<<<<<<<<<<<=============
+//Start  Code of  ========>>>>>>>>>>  Grid View With Toast <<<<<<<<<<<<<<=============
+List<String> images = [
+  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  "https://image.shutterstock.com/image-vector/404-error-page-not-found-260nw-603779531.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg"
+];
+
+
+
+class GridListWithToast extends StatelessWidget {
+  const GridListWithToast({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("GRID List With Toast"),
+      ),
+      body: Column(
+        children: [
+          GridView.builder(
+            itemCount: images.length,
+            itemBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Image.network(images[index], fit: BoxFit.cover));
+            },
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8.0,
+                crossAxisSpacing: 18.0),
+          ),
+        ],
+      ),
+    ));
+  }
+}
+
+// body: GridView.builder(gridDelegate: images.length,
+// itemBuilder: (BuildContext context, int index))
+// {
+// return Image.network();
+// },
