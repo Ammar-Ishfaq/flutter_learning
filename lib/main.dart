@@ -276,7 +276,6 @@ class StackLearning extends StatelessWidget {
           body: Center(
             child: Stack(
               fit: StackFit.passthrough,
-              overflow: Overflow.visible,
               children: [
                 Container(
                   width: 300,
@@ -1054,8 +1053,6 @@ List<String> images = [
   "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg"
 ];
 
-
-
 class GridListWithToast extends StatelessWidget {
   const GridListWithToast({Key? key}) : super(key: key);
 
@@ -1066,22 +1063,32 @@ class GridListWithToast extends StatelessWidget {
       appBar: AppBar(
         title: const Text("GRID List With Toast"),
       ),
-      body: Column(
-        children: [
-          GridView.builder(
-            itemCount: images.length,
-            itemBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Image.network(images[index], fit: BoxFit.cover));
-            },
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8.0,
-                crossAxisSpacing: 18.0),
-          ),
-        ],
+      body: GridView.builder(
+        itemCount: images.length,
+        itemBuilder: (BuildContext context, int index) => SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(children: [
+            Image.network(
+              images[index],
+              fit: BoxFit.fitWidth,
+              scale: 1.0,
+            ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                ToastContext().init(context);
+                Toast.show("Toast plugin app ${images[index]}",
+                    duration: Toast.lengthShort, gravity: Toast.bottom);
+              },
+              child: const Text('Show Toast'),
+            ),
+          ]),
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisSpacing: 8.0, crossAxisSpacing: 18.0),
       ),
     ));
   }
