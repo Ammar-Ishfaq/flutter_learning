@@ -21,7 +21,8 @@ void main() {
   //     mLongList(names: List<String>.generate(50, (a) => "Hellow Coders $a")));
   // runApp(mGridList());
   // runApp(mHorizontalList());
-  runApp(GridListWithToast());
+  // runApp(GridListWithToast());
+  runApp(CheckBoxAndRadioButton());
 }
 
 class MyApp extends StatelessWidget {
@@ -1104,9 +1105,129 @@ class GridListWithToast extends StatelessWidget {
     ));
   }
 }
-
 // body: GridView.builder(gridDelegate: images.length,
 // itemBuilder: (BuildContext context, int index))
 // {
 // return Image.network();
 // },
+
+class CheckBoxAndRadioButton extends StatefulWidget {
+  const CheckBoxAndRadioButton({Key? key}) : super(key: key);
+
+  @override
+  _CheckBoxAndRadioButtonState createState() => _CheckBoxAndRadioButtonState();
+}
+
+enum Gender { MALE, FEMALE, OTHER }
+
+class _CheckBoxAndRadioButtonState extends State<CheckBoxAndRadioButton> {
+  bool firstValue = false;
+  bool secondValue = true;
+  bool thirdValue = false;
+
+  bool checkBoxListValue = false;
+  Gender gender = Gender.MALE;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("CheckBox and Radio Button Stateful"),
+            ),
+            body: Container(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Row(
+                    children: const [
+                      Text("Hobby:"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text("Painting"),
+                      Checkbox(
+                          value: firstValue,
+                          onChanged: (newValue) {
+                            setState(() {
+                              firstValue = newValue!;
+                            });
+                          }),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text("Singing"),
+                      Checkbox(
+                          value: secondValue,
+                          onChanged: (newValue) {
+                            setState(() {
+                              secondValue = newValue!;
+                            });
+                          }),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text("Reading Books"),
+                      Checkbox(
+                          value: thirdValue,
+                          onChanged: (newValue) {
+                            setState(() {
+                              thirdValue = newValue!;
+                            });
+                          }),
+                    ],
+                  ),
+                  CheckboxListTile(
+                      title: const Text("Hey What's up"),
+                      subtitle: const Text("Fine!!!"),
+                      secondary: Icon(Icons.call),
+                      value: checkBoxListValue,
+                      onChanged: (newValue) {
+                        setState(() {
+                          checkBoxListValue = newValue!;
+                        });
+                      }),
+                  ListTile(
+                    leading: Radio(
+                      value: Gender.MALE,
+                      groupValue: gender,
+                      onChanged: (newValue) {
+                        setState(() {
+                          gender = newValue as Gender;
+                        });
+                      },
+                    ),
+                    title: const Text("Male"),
+                  ),
+                  ListTile(
+                    leading: Radio(
+                      value: Gender.FEMALE,
+                      groupValue: gender,
+                      onChanged: (newValue) {
+                        setState(() {
+                          gender = newValue as Gender;
+                        });
+                      },
+                    ),
+                    title: const Text("Female"),
+                  ),
+                  ListTile(
+                    leading: Radio(
+                      value: Gender.OTHER,
+                      groupValue: gender,
+                      onChanged: (newValue) {
+                        setState(() {
+                          gender = newValue as Gender;
+                        });
+                      },
+                    ),
+                    title: const Text("Other"),
+                  )
+                ],
+              ),
+            )));
+  }
+}
