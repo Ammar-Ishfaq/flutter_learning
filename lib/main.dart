@@ -1044,13 +1044,14 @@ class mHorizontalList extends StatelessWidget {
 //END  Code of  ========>>>>>>>>>>  List <<<<<<<<<<<<<<=============
 //Start  Code of  ========>>>>>>>>>>  Grid View With Toast <<<<<<<<<<<<<<=============
 List<String> images = [
-  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
-  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
-  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
-  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
-  "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
   "https://image.shutterstock.com/image-vector/404-error-page-not-found-260nw-603779531.jpg",
-  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg"
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
+  "https://image.shutterstock.com/image-vector/flat-icon-on-off-toggle-260nw-1543135007.jpg",
 ];
 
 class GridListWithToast extends StatelessWidget {
@@ -1068,24 +1069,34 @@ class GridListWithToast extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) => SizedBox(
           width: double.infinity,
           height: double.infinity,
-          child: Column(children: [
-            Image.network(
-              images[index],
-              fit: BoxFit.fitWidth,
-              scale: 1.0,
-            ),
-            TextButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0))),
+              child: InkWell(
+                onTap: () => print("ciao"),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  // add this
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
+                      ),
+                      child: Image.network(images[index],
+                          width: 75, height: 75, fit: BoxFit.fill),
+                    ),
+                    const ListTile(
+                      title: Text('Pub 1'),
+                      subtitle: Text('Location 1'),
+                    ),
+                  ],
+                ),
               ),
-              onPressed: () {
-                ToastContext().init(context);
-                Toast.show("Toast plugin app ${images[index]}",
-                    duration: Toast.lengthShort, gravity: Toast.bottom);
-              },
-              child: const Text('Show Toast'),
             ),
-          ]),
+          ),
         ),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, mainAxisSpacing: 8.0, crossAxisSpacing: 18.0),
