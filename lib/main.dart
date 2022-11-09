@@ -22,7 +22,8 @@ void main() {
   // runApp(mGridList());
   // runApp(mHorizontalList());
   // runApp(GridListWithToast());
-  runApp(CheckBoxAndRadioButton());
+  // runApp(CheckBoxAndRadioButton());
+  runApp(LinearProgressBar());
 }
 
 class MyApp extends StatelessWidget {
@@ -1231,3 +1232,93 @@ class _CheckBoxAndRadioButtonState extends State<CheckBoxAndRadioButton> {
             )));
   }
 }
+
+/////----- progressBar and snackBar
+//button style
+final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+  primary: Colors.black87,
+  minimumSize: const Size(88, 36),
+  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(2.0)),
+  ),
+);
+
+class LinearProgressBar extends StatefulWidget {
+  const LinearProgressBar({Key? key}) : super(key: key);
+
+  @override
+  _LinearProgressBar createState() => _LinearProgressBar();
+}
+
+class _LinearProgressBar extends State<LinearProgressBar> {
+  bool loadingLinear = false;
+  bool loadingCircular = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("CheckBox and Radio Button Stateful"),
+            ),
+            body: Center(
+              child: Column(
+                children: [
+                  Container(
+                    child: loadingLinear
+                        ? const LinearProgressIndicator()
+                        : const Text("Click to download "),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red, // background
+                      onPrimary: Colors.white, // foreground
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        loadingLinear = !loadingLinear;
+                      });
+                    },
+                    child: const Text('Download with linear progress bar'),
+                  ),
+                  Container(
+                    child: loadingCircular
+                        ? CircularProgressBar_()
+                        : const Text("Click to download"),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red, // background
+                      onPrimary: Colors.white, // foreground
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        loadingCircular = !loadingCircular;
+                      });
+                    },
+                    child: const Text('Download with CIRCULAR progress bar'),
+                  )
+                ],
+              ),
+            )));
+  }
+}
+
+class CircularProgressBar_ extends StatelessWidget {
+  bool loading = false;
+  String buttonText = "Click to download";
+
+  CircularProgressBar_({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: const CircularProgressIndicator(
+        strokeWidth: 2,
+      ),
+    );
+  }
+}
+
+
