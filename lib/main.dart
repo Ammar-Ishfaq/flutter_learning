@@ -24,7 +24,8 @@ void main() {
   // runApp(GridListWithToast());
   // runApp(CheckBoxAndRadioButton());
   // runApp(LinearProgressBar());
-  runApp(SnackBarDemo());
+  // runApp(SnackBarDemo());
+  runApp(ToolTip_());
 }
 
 class MyApp extends StatelessWidget {
@@ -1321,6 +1322,7 @@ class CircularProgressBar_ extends StatelessWidget {
     );
   }
 }
+
 class SnackBarDemo extends StatelessWidget {
   // const SnackBarDemo({super.key});
 
@@ -1332,7 +1334,7 @@ class SnackBarDemo extends StatelessWidget {
         appBar: AppBar(
           title: const Text('SnackBar Demo'),
         ),
-        body:  SnackBarPage(),
+        body: SnackBarPage(),
       ),
     );
   }
@@ -1362,6 +1364,44 @@ class SnackBarPage extends StatelessWidget {
         },
         child: const Text('Show SnackBar'),
       ),
+    );
+  }
+}
+
+class ToolTip_ extends StatelessWidget {
+  // const SnackBarPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ToolTip',
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text('ToolTip'),
+          ),
+          body: Center(
+            child: Tooltip(
+              waitDuration: const Duration(seconds: 2),
+              showDuration: const Duration(seconds: 3),
+              textStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.blue,
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.brown,
+                  borderRadius: BorderRadiusDirectional.circular(20)),
+              message: 'Set Alarm',
+              child: IconButton(
+                iconSize: 70.0,
+                icon: const Icon(
+                  Icons.alarm_add,
+                ),
+                onPressed: () {
+                  /* your code */
+                },
+              ),
+            ),
+          )),
     );
   }
 }
