@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+// import 'package:flutter_swiper/flutter_swiper.dart';
 
 void main() {
   // runApp(MyApp());// first app
@@ -28,7 +28,8 @@ void main() {
   // runApp(SnackBarDemo());
   // runApp(ToolTip_());
   // runApp(Slider_());
-  runApp(ImageSlider());
+  // runApp(ImageSlider());
+  runApp(SwitchWidget());
 }
 
 class MyApp extends StatelessWidget {
@@ -1455,26 +1456,84 @@ class _Slider_State extends State<Slider_> {
   }
 }
 
-class ImageSlider extends StatelessWidget {
+// class ImageSlider extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         home: Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Image Slider"),
+//       ),
+//       body: Container(
+//           margin: const EdgeInsets.all(5),
+//           padding: const EdgeInsets.all(5),
+//           child: imageSlider(context)),
+//     ));
+//   }
+// }
+//
+// Swiper imageSlider(BuildContext context) => Swiper(
+//     itemCount: 5,
+//     autoplay: true,
+//     itemBuilder: (BuildContext context, int index) {
+//       return Image.network(images[index],
+//       fit: BoxFit.cover,);
+//     });
+
+class SwitchWidget extends StatefulWidget {
+  const SwitchWidget({Key? key}) : super(key: key);
+
+  @override
+  State<SwitchWidget> createState() => _SwitchWidgetState();
+}
+
+class _SwitchWidgetState extends State<SwitchWidget> {
+  bool switchValue = false;
+  var textSwitch = "Switch is Off";
+
+  void displayState() {
+    if (switchValue) {
+      textSwitch = "Switch is On";
+    } else {
+      textSwitch = "Switch is Off";
+    }
+    switchValue = !switchValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: const Text("Image Slider"),
+        title: const Text("TableLayoutAndSwitchBtn"),
       ),
-      body: Container(
-          margin: const EdgeInsets.all(5),
-          padding: const EdgeInsets.all(5),
-          child: imageSlider(context)),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: Transform.scale(
+                scale: 2,
+                child: Switch(
+
+                  onChanged: (bool value) {
+                    setState(() {
+                      displayState();
+                    });
+                  },
+                  value: switchValue,
+                  inactiveThumbColor: Colors.red,
+                  inactiveTrackColor: Colors.black,
+                  activeColor: Colors.green,
+                  activeTrackColor: Colors.amber,
+                ),
+              ),
+            ),
+            Text(textSwitch)
+          ],
+        ),
+      ),
     ));
   }
 }
-
-Swiper imageSlider(BuildContext context) => Swiper(
-    itemCount: 5,
-    autoplay: true,
-    itemBuilder: (BuildContext context, int index) {
-      return Image.network(images[index],
-      fit: BoxFit.cover,);
-    });
