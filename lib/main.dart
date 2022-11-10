@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 void main() {
   // runApp(MyApp());// first app
@@ -26,7 +27,8 @@ void main() {
   // runApp(LinearProgressBar());
   // runApp(SnackBarDemo());
   // runApp(ToolTip_());
-  runApp(Slider_());
+  // runApp(Slider_());
+  runApp(ImageSlider());
 }
 
 class MyApp extends StatelessWidget {
@@ -1429,7 +1431,10 @@ class _Slider_State extends State<Slider_> {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(9),
-                  child: Icon(Icons.volume_up,size: 35,),
+                  child: Icon(
+                    Icons.volume_up,
+                    size: 35,
+                  ),
                 ),
                 Expanded(
                     child: Slider(
@@ -1449,3 +1454,27 @@ class _Slider_State extends State<Slider_> {
             )));
   }
 }
+
+class ImageSlider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("Image Slider"),
+      ),
+      body: Container(
+          margin: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
+          child: imageSlider(context)),
+    ));
+  }
+}
+
+Swiper imageSlider(BuildContext context) => Swiper(
+    itemCount: 5,
+    autoplay: true,
+    itemBuilder: (BuildContext context, int index) {
+      return Image.network(images[index],
+      fit: BoxFit.cover,);
+    });
