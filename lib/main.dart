@@ -25,7 +25,8 @@ void main() {
   // runApp(CheckBoxAndRadioButton());
   // runApp(LinearProgressBar());
   // runApp(SnackBarDemo());
-  runApp(ToolTip_());
+  // runApp(ToolTip_());
+  runApp(Slider_());
 }
 
 class MyApp extends StatelessWidget {
@@ -1403,5 +1404,48 @@ class ToolTip_ extends StatelessWidget {
             ),
           )),
     );
+  }
+}
+
+class Slider_ extends StatefulWidget {
+  const Slider_({Key? key}) : super(key: key);
+
+  @override
+  State<Slider_> createState() => _Slider_State();
+}
+
+class _Slider_State extends State<Slider_> {
+  int _value = 6;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("SliderDemo"),
+            ),
+            body: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(9),
+                  child: Icon(Icons.volume_up,size: 35,),
+                ),
+                Expanded(
+                    child: Slider(
+                  label: "Set Up Volume",
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.red,
+                  value: _value.toDouble(),
+                  max: 20,
+                  min: 5,
+                  onChanged: (double value) {
+                    setState(() {
+                      _value = value.toInt();
+                    });
+                  },
+                ))
+              ],
+            )));
   }
 }
