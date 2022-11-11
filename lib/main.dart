@@ -1516,7 +1516,6 @@ class _SwitchWidgetState extends State<SwitchWidget> {
               child: Transform.scale(
                 scale: 2,
                 child: Switch(
-
                   onChanged: (bool value) {
                     setState(() {
                       displayState();
@@ -1535,5 +1534,19 @@ class _SwitchWidgetState extends State<SwitchWidget> {
         ),
       ),
     ));
+  }
+}
+
+class TableWidget extends StatefulWidget {
+  const TableWidget({Key? key}) : super(key: key);
+
+  @override
+  State<TableWidget> createState() => _TableWidgetState();
+}
+
+class _TableWidgetState extends State<TableWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp();
   }
 }
