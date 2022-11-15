@@ -27,7 +27,8 @@ void main() {
   // runApp(ToolTip_());
   // runApp(Slider_());
   // runApp(ImageSlider());
-  runApp(SwitchWidget());
+  // runApp(SwitchWidget());
+  runApp(TableWidget());
 }
 
 class MyApp extends StatelessWidget {
@@ -1570,6 +1571,55 @@ class TableWidget extends StatefulWidget {
 class _TableWidgetState extends State<TableWidget> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Table"),
+        ),
+        body: Container(
+          margin: EdgeInsets.all(20),
+          child: Table(
+            border: TableBorder.all(
+                color: Colors.blueAccent, width: 2, style: BorderStyle.solid),
+            defaultColumnWidth: FixedColumnWidth(100),
+            children: [
+              TableRow(children: [
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                )
+              ]),
+              TableRow(children: [
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                )
+              ]),
+              TableRow(children: [
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                ),
+                Column(
+                  children: const [Text(("Name"))],
+                )
+              ])
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
