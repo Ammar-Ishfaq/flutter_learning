@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
 // import 'package:flutter_swiper/flutter_swiper.dart';
@@ -225,24 +223,25 @@ class miniProject extends StatelessWidget {
                     ),
                   )),
               //  Flat Button
-              FlatButton(
-                child: Text(
-                  "Flat Button",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {},
-                color: Colors.white,
-                textColor: Colors.orange,
-              ),
+              ElevatedButton(
+                  child: Text(
+                    "Elevated Button",
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.red, // foreground
+                  )),
               //  raised  button with two calling features longclick and short click
-              RaisedButton(
-                child: Text("Raised Button"),
-                onPressed: () {},
-                onLongPress: () {},
-                color: Colors.white70,
-                textColor: Colors.orange,
-                splashColor: Colors.black,
-              ),
+              ElevatedButton(
+                  child: Text("Elevated Button"),
+                  onPressed: () {},
+                  onLongPress: () {},
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.red, // foreground
+                  )),
               //  Floating action button
               FloatingActionButton(
                 child: Text("Floating Action button"),
@@ -409,17 +408,20 @@ class _FORMState extends State<FORM> {
             },
           ),
           Container(
-            child: RaisedButton(
-              child: Text("Submit"),
-              onPressed: () {
-                if (keys.currentState!.validate()) {
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text("Validation Going On"),
-                  ));
-                }
-              },
-            ),
-          )
+            child: ElevatedButton(
+                child: Text("Submit"),
+                onPressed: () {
+                  if (keys.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Validation Going On"),
+                    ));
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.red, // foreground
+                )),
+          ),
         ],
       ),
     );
@@ -626,23 +628,29 @@ class CARDwithDRAWER extends StatelessWidget {
                     ),
                     ButtonBar(
                       children: [
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text(
                             "Contact",
                           ),
-                          color: Colors.black,
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.red, // foreground
+                          ),
                           onPressed: () {
                             HOME_PAGE();
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: FloatingActionButton.extended(
                             label: Text("Location"),
                             icon: Icon(Icons.location_on),
                             backgroundColor: Colors.transparent,
                             onPressed: () {},
                           ),
-                          color: Colors.black,
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.red, // foreground
+                          ),
                           onPressed: () {},
                         )
                       ],
@@ -774,7 +782,7 @@ class AlertWidget extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: RaisedButton(
+          child: ElevatedButton(
             child: Text("Basic AlertDialog"),
             onPressed: () async {
               // simpleAlertDialogWidget(context);
@@ -789,7 +797,10 @@ class AlertWidget extends StatelessWidget {
                   await selectAlertDialogWidget(context);
               print(options);
             },
-            color: Colors.blue,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.red, // foreground
+            ),
           ),
         ),
       ),
@@ -805,9 +816,12 @@ simpleAlertDialogWidget(BuildContext context) {
           title: Text("Basic"),
           content: Text("This is the for the notification view"),
           actions: [
-            RaisedButton(
+            ElevatedButton(
               child: Text("OK"),
-              color: Colors.blue,
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.red, // foreground
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -828,9 +842,12 @@ inputAlertDialogWidget(BuildContext context, TextEditingController controller) {
             controller: controller,
           ),
           actions: [
-            RaisedButton(
+            ElevatedButton(
               child: Text("OK"),
-              color: Colors.blue,
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.red, // foreground
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -851,16 +868,22 @@ Future<Future<field?>> confirmAlertDialogWidget(BuildContext context) async {
           title: Text("Confirmation"),
           content: Text("Future Purpose Notification"),
           actions: [
-            RaisedButton(
+            ElevatedButton(
               child: Text("Cancel"),
-              color: Colors.blue,
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue, // foreground
+              ),
               onPressed: () {
                 Navigator.of(context).pop(field.cancel);
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text("Accept"),
-              color: Colors.blue,
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue, // foreground
+              ),
               onPressed: () {
                 Navigator.of(context).pop(field.Accept);
               },
