@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
+
 // import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 void main() {
   // runApp(MyApp());// first app
@@ -28,7 +30,8 @@ void main() {
   // runApp(Slider_());
   // runApp(ImageSlider());
   // runApp(SwitchWidget());
-  runApp(TableWidget());
+  // runApp(TableWidget());
+  runApp(CalenderWidget());
 }
 
 class MyApp extends StatelessWidget {
@@ -1577,11 +1580,11 @@ class _TableWidgetState extends State<TableWidget> {
           title: Text("Table"),
         ),
         body: Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: Table(
             border: TableBorder.all(
                 color: Colors.blueAccent, width: 2, style: BorderStyle.solid),
-            defaultColumnWidth: FixedColumnWidth(100),
+            defaultColumnWidth: const FixedColumnWidth(100),
             children: [
               TableRow(children: [
                 Column(
@@ -1621,5 +1624,79 @@ class _TableWidgetState extends State<TableWidget> {
         ),
       ),
     );
+  }
+}
+
+//day 24 calender widget
+class CalenderWidget extends StatefulWidget {
+  const CalenderWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CalenderWidget> createState() => _CalenderWidgetState();
+}
+
+class _CalenderWidgetState extends State<CalenderWidget> {
+  void initState() {
+    super.initState();
+  }
+
+  static const todayBox = BoxDecoration(
+      color: Colors.cyan,
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10), topRight: Radius.circular(10)));
+  static const selectedBox = BoxDecoration(
+    color: Colors.green,
+    shape: BoxShape.circle,
+  );
+
+  static final headerBox = BoxDecoration(
+      color: Colors.cyan,
+      borderRadius: BorderRadiusDirectional.circular(5.0));
+
+  var _selectedCalendarDate = DateTime.now();
+  var _focusedCalendarDate = DateTime.now();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("Calender"),
+      ),
+      body: Column(
+        children: [
+          TableCalendar(
+            firstDay: DateTime.utc(2010, 10, 16),
+            lastDay: DateTime.utc(2030, 3, 14),
+            focusedDay: DateTime.now(),
+            calendarFormat: CalendarFormat.month,
+            calendarStyle: const CalendarStyle(
+              todayTextStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              todayDecoration: todayBox,
+              selectedDecoration: selectedBox,
+              selectedTextStyle:
+                  TextStyle(fontWeight: FontWeight.normal, color: Colors.white),
+            ),
+            selectedDayPredicate: (currentSelectedDate) {
+              // as per the documentation 'selectedDayPredicate' needs to determine current selected day.
+              return (isSameDay(_selectedCalendarDate!, currentSelectedDate));
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              // as per the documentation
+              if (!isSameDay(_selectedCalendarDate, selectedDay)) {
+                setState(() {
+                  _selectedCalendarDate = selectedDay;
+                  _focusedCalendarDate = focusedDay;
+                });
+              }
+            },
+            headerStyle: HeaderStyle(
+                titleCentered: true, formatButtonDecoration: headerBox),
+
+          )
+        ],
+      ),
+    ));
   }
 }
