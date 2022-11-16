@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
+import 'dart:async';
 
 // import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -32,7 +33,8 @@ void main() {
   // runApp(SwitchWidget());
   // runApp(TableWidget());
   // runApp(CalenderWidget());
-  runApp(NavigationAndRouting());
+  // runApp(NavigationAndRouting());
+  runApp(SplashScreenApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -1769,5 +1771,60 @@ class SecondScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class SplashScreenApp extends StatelessWidget {
+  const SplashScreenApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 4),
+        () => {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => SplashHomePage()))
+            });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Image.network(images.first),
+    );
+  }
+}
+
+class SplashHomePage extends StatelessWidget {
+  const SplashHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("HomePage"),
+        ),
+        body: const Center(
+          child: Text("Welcome to the FlutterApp"),
+        ));
   }
 }
