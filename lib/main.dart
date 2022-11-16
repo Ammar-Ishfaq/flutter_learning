@@ -180,19 +180,19 @@ class miniProject extends StatelessWidget {
             children: [
               Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 30),
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.orange,
-                        border: Border.all(color: Colors.white, width: 1.0)),
-                    child: Center(
-                        child: Text(
-                          "S",
-                          style: TextStyle(fontSize: 50, color: Colors.white),
-                        )),
-                  )),
+                margin: EdgeInsets.only(top: 30),
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.orange,
+                    border: Border.all(color: Colors.white, width: 1.0)),
+                child: Center(
+                    child: Text(
+                  "S",
+                  style: TextStyle(fontSize: 50, color: Colors.white),
+                )),
+              )),
               Container(
                   margin: EdgeInsets.all(30),
                   decoration: BoxDecoration(
@@ -297,7 +297,7 @@ class StackLearning extends StatelessWidget {
                     child: Text(
                       "Center Text inside Container",
                       style:
-                      TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -536,7 +536,7 @@ class IMAGES extends StatelessWidget {
                     height: 150,
                     placeholder: "assets/duck.png",
                     image:
-                    "https://www.sammobile.com/wp-content/uploads/2019/03/keyguard_default_wallpaper_silver.png",
+                        "https://www.sammobile.com/wp-content/uploads/2019/03/keyguard_default_wallpaper_silver.png",
                   )
                 ],
               )
@@ -623,7 +623,7 @@ class CARDwithDRAWER extends StatelessWidget {
                         ),
                         title: Text("Ammar Ishfaq",
                             style:
-                            TextStyle(fontSize: 25, color: Colors.black)),
+                                TextStyle(fontSize: 25, color: Colors.black)),
                         subtitle: Text("+923234164199",
                             style: TextStyle(
                                 fontSize: 15,
@@ -799,7 +799,7 @@ class AlertWidget extends StatelessWidget {
 
               //  FOR SELECTING LANGUAGES THE
               final Future<selectLanguage?> options =
-              await selectAlertDialogWidget(context);
+                  await selectAlertDialogWidget(context);
               print(options);
             },
             style: ElevatedButton.styleFrom(
@@ -1006,18 +1006,18 @@ class mGridList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: Text("GRID List"),
-          ),
-          body: GridView.count(
-            crossAxisCount: 2,
-            children: List.generate(datas.length, (index) {
-              return newCard(
-                datas: datas[index],
-              );
-            }),
-          ),
-        ));
+      appBar: AppBar(
+        title: Text("GRID List"),
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(datas.length, (index) {
+          return newCard(
+            datas: datas[index],
+          );
+        }),
+      ),
+    ));
   }
 }
 
@@ -1050,28 +1050,28 @@ class mHorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Horizontal List"),
-          ),
-          body: SizedBox(
-            height: 150.0,
-            child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: List.generate(datas.length, (index) {
-                  return Container(
-                    width: 148.0,
-                    color:
+      appBar: AppBar(
+        title: const Text("Horizontal List"),
+      ),
+      body: SizedBox(
+        height: 150.0,
+        child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: List.generate(datas.length, (index) {
+              return Container(
+                width: 148.0,
+                color:
                     Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                    child: Center(
-                      child: ListTile(
-                        leading: Icon(datas[index].icon),
-                        title: Text(datas[index].title),
-                      ),
-                    ),
-                  );
-                })),
-          ),
-        ));
+                child: Center(
+                  child: ListTile(
+                    leading: Icon(datas[index].icon),
+                    title: Text(datas[index].title),
+                  ),
+                ),
+              );
+            })),
+      ),
+    ));
   }
 }
 
@@ -1097,50 +1097,47 @@ class GridListWithToast extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text("GRID List With Toast"),
-          ),
-          body: GridView.builder(
-            itemCount: images.length,
-            itemBuilder: (BuildContext context, int index) =>
-                SizedBox(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Container(
-                    margin: const EdgeInsets.all(8.0),
-                    child: Card(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      child: InkWell(
-                        onTap: () => print("ciao"),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          // add this
-                          children: <Widget>[
-                            ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(8.0),
-                                topRight: Radius.circular(8.0),
-                              ),
-                              child: Image.network(images[index],
-                                  width: 75, height: 75, fit: BoxFit.fill),
-                            ),
-                            const ListTile(
-                              title: Text('Pub 1'),
-                              subtitle: Text('Location 1'),
-                            ),
-                          ],
-                        ),
+      appBar: AppBar(
+        title: const Text("GRID List With Toast"),
+      ),
+      body: GridView.builder(
+        itemCount: images.length,
+        itemBuilder: (BuildContext context, int index) => SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0))),
+              child: InkWell(
+                onTap: () => print("ciao"),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  // add this
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
                       ),
+                      child: Image.network(images[index],
+                          width: 75, height: 75, fit: BoxFit.fill),
                     ),
-                  ),
+                    const ListTile(
+                      title: Text('Pub 1'),
+                      subtitle: Text('Location 1'),
+                    ),
+                  ],
                 ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8.0,
-                crossAxisSpacing: 18.0),
+              ),
+            ),
           ),
-        ));
+        ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisSpacing: 8.0, crossAxisSpacing: 18.0),
+      ),
+    ));
   }
 }
 // body: GridView.builder(gridDelegate: images.length,
@@ -1470,18 +1467,18 @@ class _Slider_State extends State<Slider_> {
                 ),
                 Expanded(
                     child: Slider(
-                      label: "Set Up Volume",
-                      activeColor: Colors.green,
-                      inactiveColor: Colors.red,
-                      value: _value.toDouble(),
-                      max: 20,
-                      min: 5,
-                      onChanged: (double value) {
-                        setState(() {
-                          _value = value.toInt();
-                        });
-                      },
-                    ))
+                  label: "Set Up Volume",
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.red,
+                  value: _value.toDouble(),
+                  max: 20,
+                  min: 5,
+                  onChanged: (double value) {
+                    setState(() {
+                      _value = value.toInt();
+                    });
+                  },
+                ))
               ],
             )));
   }
@@ -1535,36 +1532,36 @@ class _SwitchWidgetState extends State<SwitchWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text("TableLayoutAndSwitchBtn"),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: Transform.scale(
-                    scale: 2,
-                    child: Switch(
-                      onChanged: (bool value) {
-                        setState(() {
-                          displayState();
-                        });
-                      },
-                      value: switchValue,
-                      inactiveThumbColor: Colors.red,
-                      inactiveTrackColor: Colors.black,
-                      activeColor: Colors.green,
-                      activeTrackColor: Colors.amber,
-                    ),
-                  ),
+      appBar: AppBar(
+        title: const Text("TableLayoutAndSwitchBtn"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: Transform.scale(
+                scale: 2,
+                child: Switch(
+                  onChanged: (bool value) {
+                    setState(() {
+                      displayState();
+                    });
+                  },
+                  value: switchValue,
+                  inactiveThumbColor: Colors.red,
+                  inactiveTrackColor: Colors.black,
+                  activeColor: Colors.green,
+                  activeTrackColor: Colors.amber,
                 ),
-                Text(textSwitch)
-              ],
+              ),
             ),
-          ),
-        ));
+            Text(textSwitch)
+          ],
+        ),
+      ),
+    ));
   }
 }
 
@@ -1663,44 +1660,43 @@ class _CalenderWidgetState extends State<CalenderWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Calender"),
-          ),
-          body: Column(
-            children: [
-              TableCalendar(
-                firstDay: DateTime.utc(2010, 10, 16),
-                lastDay: DateTime.utc(2030, 3, 14),
-                focusedDay: DateTime.now(),
-                calendarFormat: CalendarFormat.month,
-                calendarStyle: const CalendarStyle(
-                  todayTextStyle:
+      appBar: AppBar(
+        title: const Text("Calender"),
+      ),
+      body: Column(
+        children: [
+          TableCalendar(
+            firstDay: DateTime.utc(2010, 10, 16),
+            lastDay: DateTime.utc(2030, 3, 14),
+            focusedDay: DateTime.now(),
+            calendarFormat: CalendarFormat.month,
+            calendarStyle: const CalendarStyle(
+              todayTextStyle:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                  todayDecoration: todayBox,
-                  selectedDecoration: selectedBox,
-                  selectedTextStyle:
+              todayDecoration: todayBox,
+              selectedDecoration: selectedBox,
+              selectedTextStyle:
                   TextStyle(fontWeight: FontWeight.normal, color: Colors.white),
-                ),
-                selectedDayPredicate: (currentSelectedDate) {
-                  // as per the documentation 'selectedDayPredicate' needs to determine current selected day.
-                  return (isSameDay(
-                      _selectedCalendarDate!, currentSelectedDate));
-                },
-                onDaySelected: (selectedDay, focusedDay) {
-                  // as per the documentation
-                  if (!isSameDay(_selectedCalendarDate, selectedDay)) {
-                    setState(() {
-                      _selectedCalendarDate = selectedDay;
-                      _focusedCalendarDate = focusedDay;
-                    });
-                  }
-                },
-                headerStyle: HeaderStyle(
-                    titleCentered: true, formatButtonDecoration: headerBox),
-              )
-            ],
-          ),
-        ));
+            ),
+            selectedDayPredicate: (currentSelectedDate) {
+              // as per the documentation 'selectedDayPredicate' needs to determine current selected day.
+              return (isSameDay(_selectedCalendarDate!, currentSelectedDate));
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              // as per the documentation
+              if (!isSameDay(_selectedCalendarDate, selectedDay)) {
+                setState(() {
+                  _selectedCalendarDate = selectedDay;
+                  _focusedCalendarDate = focusedDay;
+                });
+              }
+            },
+            headerStyle: HeaderStyle(
+                titleCentered: true, formatButtonDecoration: headerBox),
+          )
+        ],
+      ),
+    ));
   }
 }
 
@@ -1713,9 +1709,8 @@ class NavigationAndRouting extends StatelessWidget {
     return MaterialApp(
       initialRoute: ('/'),
       routes: {
-        '/':(context)=>const FirstScreen(),
-        '/second':(context)=>const SecondScreen(),
-
+        '/': (context) => const FirstScreen(),
+        '/second': (context) => const SecondScreen(),
       },
     );
   }
