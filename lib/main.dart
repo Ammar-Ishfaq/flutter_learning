@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:toast/toast.dart';
 import 'newCard.dart';
 import 'dart:async';
@@ -1780,20 +1781,20 @@ class SplashScreenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashScreen(),
+      home: SplashScreen2(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class SplashScreen1 extends StatefulWidget {
+  const SplashScreen1({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen1> createState() => _SplashScreen1State();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreen1State extends State<SplashScreen1> {
   @override
   void initState() {
     super.initState();
@@ -1826,5 +1827,22 @@ class SplashHomePage extends StatelessWidget {
         body: const Center(
           child: Text("Welcome to the FlutterApp"),
         ));
+  }
+}
+
+class SplashScreen2 extends StatelessWidget {
+  const SplashScreen2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 7,
+      navigateAfterSeconds: SplashHomePage(),
+      title: Text("E-Learning Platform for flutter"),
+      image: Image.network(images.first),
+      photoSize: 100.0,
+      loadingText: Text("Loading"),
+      loaderColor: Colors.blue,
+    );
   }
 }
